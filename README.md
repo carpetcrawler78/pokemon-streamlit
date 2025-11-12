@@ -18,15 +18,17 @@ For __MacOs__/__Linux__ users
 pyenv local 3.11.3 
 python -m venv .venv
 source .venv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
 For __Windows__ users with __PowerShell CLI__
 
-```bash
+```Powershell
 pyenv local 3.11.3
 python -m venv .venv
 .venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
@@ -36,6 +38,7 @@ For __Windows__ users with __GIT-BASH CLI__
 pyenv local 3.11.3 
 python -m venv .venv
 source .venv/Scripts/activate
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
