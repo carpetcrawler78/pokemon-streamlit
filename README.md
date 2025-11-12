@@ -45,24 +45,6 @@ You can check if Streamlit is correctly installed by running a sample app with t
 streamlit hello
 ```
 This should open a Streamlit web app in your default web browser.  
-
-</br></br>
-**❗️ XGBoost & libomp on macOS**
-
-- XGBoost is written in C++ and uses OpenMP for parallelism (multi-threading).
-
-- OpenMP requires the libomp runtime library.
-
-- On **Linux/Windows**, it’s included with **gcc** or **MSVC**.
-
-- On **macOS**, Apple’s Clang doesn’t ship with OpenMP → so you may see:  
-`OSError: libomp.dylib not found`  
-
-✅ **Fix:** `brew install libomp`
-
-🔹 After this, from xgboost import XGBClassifier will work properly, and training will run faster because XGBoost can use multiple threads.
-
-
 </br>
 
 <a id="streamlit-essentials"></a>
