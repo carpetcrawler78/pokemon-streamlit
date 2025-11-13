@@ -66,5 +66,6 @@ if st.button('Predict!'):
 
     if y_pred == 1:
         st.success(f"✅ This Pokémon is **Legendary**! (prob = {y_prob:.2%})")
+        st.balloons()
     else:
         st.info(f"❌ This Pokémon is **Not Legendary** (prob = {y_prob:.2%})")

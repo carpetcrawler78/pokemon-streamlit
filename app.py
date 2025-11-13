@@ -12,7 +12,7 @@ f.navigation()
 
 
 # Write title/headers/text
-st.title('🔴⚪️ Welcome to my Pokémon - Streamlit Demo!')
+st.title('🔴⚪️ Welcome to my :rainbow[Pokémon] - Streamlit Demo!')
 
 # Also with markdown and HTML formatting
 # st.markdown("<h1 style='font-size: 33px;'><p style='color:red;'>🔴⚪️ Welcome to my Pokémon - Streamlit Demo!</h1></p>", 
