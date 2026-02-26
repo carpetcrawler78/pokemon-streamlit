@@ -3,12 +3,21 @@ import pandas as pd
 import functions as f
 import plotly.express as px
 import plotly.graph_objects as go
+import random
+from streamlit_autorefresh import st_autorefresh
 
 st.set_page_config(
     page_title="EDA Visualization",
     page_icon="🔴")
 
 f.navigation()
+
+auto_refresh = st.sidebar.checkbox("🔄 Auto-Refresh", value=False)
+
+if auto_refresh:
+    count = st_autorefresh(interval=5000, key="auto")
+else:
+    count = st.session_state.get("_last_count", 0)
 
 st.title("📊 EDA Visualization")
 st.subheader("Let's explore the Pokémon dataset.")
@@ -34,19 +43,26 @@ fig.update_traces(
     '<b>Weight (kg):</b> %{y}<br>' +
     '<b>Type:</b> %{customdata[1]}<br>' +
     '<b>Speed:</b> %{customdata[2]}<br>' +
-    '<extra></extra>', 
+    '<extra></extra>',
     customdata=st.session_state.df[['name', 'type', 'speed']].values)
 
-st.plotly_chart(fig)
+st.plotly_chart(fig, key=f"scatter_{count}")
 
 
 # Radar chart
 
-st.subheader('Pokémon Stats Radar Chart')
+st.subheader(f'Pokémon Stats Radar Chart')
+
+options = st.session_state.df.name.to_list()
+
+# Nach Refresh: nur zurücksetzen wenn count sich erhöht hat (echter Autorefresh)
+if count != st.session_state.get("_last_count", 0):
+    st.session_state["_last_count"] = count
+    st.session_state["pokemon"] = options[0]
 
 pokemon_name = st.selectbox(
     'Select Pokemon',
-    st.session_state.df['name'].tolist(),
+    options,
     key="pokemon"
 )
 
@@ -54,9 +70,16 @@ pokemon_row = st.session_state.df[st.session_state.df['name']==pokemon_name].ilo
 
 fig = go.Figure()
 
+r, g, b = random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)
+
+vals = list(pokemon_row[st.session_state.stats_cols].values)
+cols = list(st.session_state.stats_cols)
+
 fig.add_trace(go.Scatterpolar(
-              r=pokemon_row[st.session_state.stats_cols].values,
-              theta=st.session_state.stats_cols,
+              r=vals + [vals[0]],
+              theta=cols + [cols[0]],
+              fillcolor=f'rgba({r},{g},{b},0.3)',
+              line=dict(color=f'rgb({r},{g},{b})'),
               fill='toself',
               name=pokemon_name)
 )
