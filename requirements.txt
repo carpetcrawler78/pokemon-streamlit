@@ -5,3 +5,4 @@ plotly
 seaborn
 matplotlib
 streamlit-autorefresh
+scikit-learn==1.7.2
