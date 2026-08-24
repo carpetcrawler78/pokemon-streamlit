@@ -4,6 +4,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 import functions as f
 
+
+f.load_data()
+
 st.set_page_config(
     page_title="Map",
     page_icon="🔴")

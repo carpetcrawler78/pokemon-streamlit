@@ -6,6 +6,9 @@ import plotly.graph_objects as go
 import random
 from streamlit_autorefresh import st_autorefresh
 
+f.load_data()
+
+
 st.set_page_config(
     page_title="EDA Visualization",
     page_icon="🔴")

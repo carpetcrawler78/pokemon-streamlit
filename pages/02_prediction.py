@@ -6,6 +6,8 @@ st.set_page_config(
     page_title="Is it legendary?",
     page_icon="🔴")
 
+f.load_data()
+
 f.navigation()
 
 st.title("⚡️ Is my Pokémon legendary??")

@@ -33,5 +33,7 @@ st.write("")
 st.markdown('- EDA Visualizations / Dataset exploration \n - __Prediction:__ Is my Pokémon legendary? \n - Find our Pokémon in the map')
 st.page_link("pages/01_eda.py", label="📊 - EDA Visualizations / Dataset exploration")
 # Save variables in the session state
-st.session_state.df = pd.read_csv('data/pokemon.csv')
-st.session_state.stats_cols = ['hit_points','attack','defense','sp_attack','sp_defense','speed']
+
+f.load_data()
+#st.session_state.df = pd.read_csv('data/pokemon.csv')
+#st.session_state.stats_cols = ['hit_points','attack','defense','sp_attack','sp_defense','speed']

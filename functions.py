@@ -16,3 +16,8 @@ def navigation():
 def show_pairplot(df, columns, hue=None):
     fig = sns.pairplot(df[columns], hue=hue)
     st.pyplot(fig)
+
+def load_data():
+    if 'df' not in st.session_state:
+        st.session_state.df = pd.read_csv('data/pokemon.csv')
+        st.session_state.stats_cols = ['hit_points','attack','defense','sp_attack','sp_defense','speed']
